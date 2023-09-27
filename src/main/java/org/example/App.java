@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.List;
+
 /**
  * Hello world!
  */
@@ -19,9 +21,9 @@ public class App {
 
             session.beginTransaction();
 
-            Person person = session.get(Person.class, 1);
+            List<Person> personList = session.createQuery("from Person").getResultList();
 
-            session.remove(person);
+            personList.stream().forEach(System.out::println);
 
             session.getTransaction().commit();
         }
