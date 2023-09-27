@@ -2,6 +2,9 @@ package org.example.Model;
 
 import jakarta.persistence.*;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @Entity
 @Table(name = "Person")
 public class Person {
@@ -19,6 +22,10 @@ public class Person {
 
     @Column(name = "age")
     private int age;
+
+    @OneToMany(mappedBy = "owner")
+    List<Item> items;
+
 
     public Person() {
     }
@@ -50,6 +57,14 @@ public class Person {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     @Override
