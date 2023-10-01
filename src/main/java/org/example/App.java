@@ -2,6 +2,7 @@ package org.example;
 
 
 import org.example.Model.Item;
+import org.example.Model.Passport;
 import org.example.Model.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +14,7 @@ import org.hibernate.cfg.Configuration;
 public class App {
     public static void main(String[] args) {
         Configuration configuration = new Configuration().addAnnotatedClass(Person.class)
-                .addAnnotatedClass(Item.class);
+                .addAnnotatedClass(Item.class).addAnnotatedClass(Passport.class);
 
 
         try (SessionFactory sessionFactory = configuration.buildSessionFactory();) {
@@ -21,17 +22,17 @@ public class App {
 
             session.beginTransaction();
 
-            Person person = session.get(Person.class, 1);
+            Person person = new Person("new test oneToOne", 99);
 
-            Item newItem = new Item("Item from Hibername", person);
+            Passport passport = new Passport(person, 123456);
 
-            session.persist(newItem);
+//            установление связи со 2 стороны
 
-//            Hibernate уже добавил это в базу данных, но в его кеше у родителя(оwner) еще нет этого айтема
-//            Поэтому мы дополнительно добавляем этот айтем владельцу с список всех айтемов, на
-//            sql бд это никак не повлияет
+            person.setPassport(passport);
 
-            person.getItems().add(newItem);
+// обязательно утсанрвить связь надо со стороны, где используется аннотация @JoinColumn
+
+            session.persist(person);
 
             session.getTransaction().commit();
         }
