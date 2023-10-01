@@ -1,9 +1,8 @@
 package org.example;
 
 
-import org.example.Model.Item;
-import org.example.Model.Passport;
-import org.example.Model.Person;
+import org.example.Model.Principal;
+import org.example.Model.School;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,26 +12,33 @@ import org.hibernate.cfg.Configuration;
  */
 public class App {
     public static void main(String[] args) {
-        Configuration configuration = new Configuration().addAnnotatedClass(Person.class)
-                .addAnnotatedClass(Item.class).addAnnotatedClass(Passport.class);
+        Configuration configuration = new Configuration().addAnnotatedClass(Principal.class).addAnnotatedClass(School.class);
 
 
-        try (SessionFactory sessionFactory = configuration.buildSessionFactory();) {
-            Session session = sessionFactory.getCurrentSession();
-
+        try (SessionFactory sessionFactory = configuration.buildSessionFactory();
+             Session session = sessionFactory.getCurrentSession();
+        ) {
             session.beginTransaction();
 
-            Person person = new Person("new test oneToOne", 99);
+            // 1 ex
 
-            Passport passport = new Passport(person, 123456);
+            Principal principal =  session.createQuery("from Principal where school != null", Principal.class).stream().findAny().orElse(null);
+            School school0 = principal.getSchool();
 
-//            установление связи со 2 стороны
+            // 2 ex
+            school0.setPrincipal(null);
 
-            person.setPassport(passport);
+            Principal principal1 = new Principal("test", 99);
+            School school = new School(99, principal1);
 
-// обязательно утсанрвить связь надо со стороны, где используется аннотация @JoinColumn
+            session.persist(school);
 
-            session.persist(person);
+//          для  hibernate кеша
+
+            principal1.setSchool(school);
+            school.setPrincipal(principal);
+
+            principal.setSchool(school);
 
             session.getTransaction().commit();
         }
