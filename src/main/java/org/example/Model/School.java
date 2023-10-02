@@ -12,7 +12,7 @@ public class School {
     @Column
     private int school_number;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne
     @JoinColumn(name = "principal_id", referencedColumnName = "id")
     private Principal principal;
 

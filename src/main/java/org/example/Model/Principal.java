@@ -16,7 +16,7 @@ public class Principal {
     @Column
     private int age;
 
-    @OneToOne(mappedBy = "principal")
+    @OneToOne(mappedBy = "principal", cascade = CascadeType.PERSIST)
     private School school;
 
     public Principal() {
