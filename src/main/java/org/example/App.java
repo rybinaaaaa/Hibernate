@@ -1,38 +1,50 @@
 package org.example;
 
 
-import org.example.Model.Item;
-import org.example.Model.Passport;
-import org.example.Model.Person;
+import org.example.Model.Actor;
+import org.example.Model.Movie;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Hello world!
  */
 public class App {
     public static void main(String[] args) {
-        Configuration configuration = new Configuration().addAnnotatedClass(Person.class)
-                .addAnnotatedClass(Item.class).addAnnotatedClass(Passport.class);
+        Configuration configuration = new Configuration().addAnnotatedClass(Actor.class).addAnnotatedClass(Movie.class);
 
 
-        try (SessionFactory sessionFactory = configuration.buildSessionFactory();) {
+        try (SessionFactory sessionFactory = configuration.buildSessionFactory()) {
             Session session = sessionFactory.getCurrentSession();
-
             session.beginTransaction();
 
-            Person person = new Person("new test oneToOne", 99);
+            Movie movie = new Movie("Pulp Fiction");
+            Actor actor1 = new Actor("Hervey Keitel");
+            Actor actor2 = new Actor("Samuel Jackson");
 
-            Passport passport = new Passport(person, 123456);
+//            List.of - вообще неизсеняемый
+//            Arrays.asList - изменяемый но фиксированого размера
 
-//            установление связи со 2 стороны
+//            1 Сторона
 
-            person.setPassport(passport);
+            movie.setActorList(new ArrayList<Actor>(List.of(actor1, actor2)));
 
-// обязательно утсанрвить связь надо со стороны, где используется аннотация @JoinColumn
+//            2 стороона
 
-            session.persist(person);
+//            просто создает список из одного элемента
+            actor1.setMovies(new ArrayList<>(Collections.singletonList(movie)));
+            actor2.setMovies(new ArrayList<>(Collections.singletonList(movie)));
+
+
+            session.persist(movie);
+
+            session.persist(actor1);
+            session.persist(actor2);
 
             session.getTransaction().commit();
         }
