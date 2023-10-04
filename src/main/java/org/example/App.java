@@ -9,7 +9,6 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * Hello world!
@@ -23,28 +22,16 @@ public class App {
             Session session = sessionFactory.getCurrentSession();
             session.beginTransaction();
 
-            Movie movie = new Movie("Pulp Fiction");
-            Actor actor1 = new Actor("Hervey Keitel");
-            Actor actor2 = new Actor("Samuel Jackson");
 
-//            List.of - вообще неизсеняемый
-//            Arrays.asList - изменяемый но фиксированого размера
+            Movie movie = new Movie("Reservoie Dogs");
+            Actor actor = session.get(Actor.class, 14);
 
-//            1 Сторона
+            movie.setActorList(new ArrayList<>(Collections.singletonList(actor)));
 
-            movie.setActorList(new ArrayList<Actor>(List.of(actor1, actor2)));
-
-//            2 стороона
-
-//            просто создает список из одного элемента
-            actor1.setMovies(new ArrayList<>(Collections.singletonList(movie)));
-            actor2.setMovies(new ArrayList<>(Collections.singletonList(movie)));
-
+//            actor.setMovies(new ArrayList<>());
+            actor.getMovies().add(movie);
 
             session.persist(movie);
-
-            session.persist(actor1);
-            session.persist(actor2);
 
             session.getTransaction().commit();
         }

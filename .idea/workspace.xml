@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e84ec78-ed51-422e-a281-aea8d72d2352" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Actor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/hibernate_demo.sIGXyg/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/hibernate_demo.sIGXyg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/hibernate_demo.sIGXyg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/hibernate_demo.sIGXyg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/hibernate_demo.sIGXyg/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/hibernate_demo.sIGXyg/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/hibernate_demo.sIGXyg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/hibernate_demo.sIGXyg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4bd851f8-b383-406d-8bac-e66f6d29b43e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Item.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Passport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Person.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +94,7 @@
       <workItem from="1695844634415" duration="7425000" />
       <workItem from="1696319614369" duration="1669000" />
       <workItem from="1696426107600" duration="1433000" />
+      <workItem from="1696427548183" duration="1303000" />
     </task>
     <servers />
   </component>
@@ -117,6 +111,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="org.hibernate.AnnotationException" package="org.hibernate" />
           <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
