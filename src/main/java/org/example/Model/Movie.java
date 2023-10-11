@@ -3,6 +3,7 @@ package org.example.Model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Movie {
@@ -51,5 +52,18 @@ public class Movie {
 
     public void setActorList(List<Actor> actorList) {
         this.actorList = actorList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return id == movie.id && Objects.equals(name, movie.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

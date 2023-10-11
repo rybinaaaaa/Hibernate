@@ -23,15 +23,20 @@ public class App {
             session.beginTransaction();
 
 
-            Movie movie = new Movie("Reservoie Dogs");
-            Actor actor = session.get(Actor.class, 14);
+           Actor actor = session.get(Actor.class, 15);
 
-            movie.setActorList(new ArrayList<>(Collections.singletonList(actor)));
+//            System.out.println(actor.getMovies());
+            actor.getMovies().forEach(System.out::println);
 
-//            actor.setMovies(new ArrayList<>());
-            actor.getMovies().add(movie);
+            Movie movieToRemove = actor.getMovies().get(0);
 
-            session.persist(movie);
+//            1 сторона
+
+            actor.getMovies().remove(0);
+
+//            Надо перенастроить hash-code и equals
+//            2 сторона
+            movieToRemove.getActorList().remove(actor);
 
             session.getTransaction().commit();
         }
